@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Runtime configuration for Mabel Teleop.
+     Edit this file to point the headset at a different robot. All keys
+     are optional — missing values fall back to AppConfiguration.default.
+     See Configuration/ConfigurationLoader.swift for the full schema. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>network</key>
+    <dict>
+        <key>host</key>                  <string>mabel.local</string>
+        <key>telemetryPort</key>         <integer>9090</integer>
+        <key>telemetryPath</key>         <string>/teleop</string>
+        <key>videoPort</key>             <integer>8080</integer>
+        <key>mainCameraPath</key>        <string>/camera/main/stream.mjpg</string>
+        <key>leftWristCameraPath</key>   <string>/camera/wrist_left/stream.mjpg</string>
+        <key>rightWristCameraPath</key>  <string>/camera/wrist_right/stream.mjpg</string>
+    </dict>
+    <key>tracking</key>
+    <dict>
+        <key>transmissionRateHz</key>    <real>60.0</real>
+        <key>sendFullSkeleton</key>      <true/>
+        <key>minTrackingConfidence</key> <real>0.5</real>
+    </dict>
+    <key>video</key>
+    <dict>
+        <key>wristThumbnailWidth</key>   <integer>480</integer>
+        <key>reconnectDelay</key>        <real>1.5</real>
+    </dict>
+</dict>
+</plist>
