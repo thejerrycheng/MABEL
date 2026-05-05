@@ -1,0 +1,35 @@
+<mujoco model="mabel_lift_component">
+    <asset>
+        <material name="lift_outer_mat" rgba="0.2 0.2 0.2 1"/>
+        <material name="lift_middle_mat" rgba="0.5 0.5 0.5 1"/>
+        <material name="lift_inner_mat" rgba="0.8 0.8 0.8 1"/>
+    </asset>
+
+    <worldbody>
+        <body name="lift_base" pos="0 0 0.3">
+            <geom type="box" size="0.04 0.04 0.3" material="lift_inner_mat" mass="2" contype="0" conaffinity="0"/>
+
+            <body name="lift_middle" pos="0 0 0.1">
+                <joint name="slide_middle" type="slide" axis="0 0 1" range="0 0.4" limited="true" 
+                       armature="5" frictionloss="10" damping="5"/>
+                <geom type="box" size="0.05 0.05 0.3" material="lift_middle_mat" mass="1" contype="0" conaffinity="0"/>
+
+                <body name="lift_top" pos="0 0 0.1">
+                    <joint name="slide_top" type="slide" axis="0 0 1" range="0 0.4" limited="true" 
+                           armature="5" frictionloss="10" damping="5"/>
+                    <geom type="box" size="0.06 0.06 0.3" material="lift_outer_mat" mass="1" contype="0" conaffinity="0"/>
+                    
+                    <site name="torso_mount_point" pos="0 0 0.3" size="0.01" rgba="1 0 0 1"/>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <equality>
+        <joint joint1="slide_top" joint2="slide_middle" polycoef="0 1 0 0 0"/>
+    </equality>
+
+    <actuator>
+        <position name="actuator_lift" joint="slide_middle" kp="5000" kv="150" ctrlrange="0 0.4" ctrllimited="true"/>
+    </actuator>
+</mujoco>
